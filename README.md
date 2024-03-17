@@ -1,5 +1,3 @@
-# Inbank REST API
-
 # Inbank App with Vue and Spring Boot
 ## Build inbank-api image from root directory
 ```sh
