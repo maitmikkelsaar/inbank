@@ -1,0 +1,23 @@
+sourceSets {
+    intTest {
+        compileClasspath += sourceSets.main.output
+        runtimeClasspath += sourceSets.main.output
+    }
+}
+
+configurations {
+    intTestImplementation.extendsFrom implementation
+    intTestRuntimeOnly.extendsFrom runtimeOnly
+}
+
+task integrationTest(type: Test) {
+    description = 'Run integration tests.'
+    group = 'verification'
+    testClassesDirs = sourceSets.intTest.output.classesDirs
+    classpath = sourceSets.intTest.runtimeClasspath
+    ignoreFailures = false
+}
+
+dependencies {
+    intTestImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
